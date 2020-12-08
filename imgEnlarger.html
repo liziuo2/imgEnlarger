@@ -90,7 +90,22 @@
                 x = x - mask.offsetWidth * 0.5
                 y = y - mask.offsetHeight * 0.5
 
-                // 将x,y的值赋值给mask的left和top
+                // 3.3将x,y的值赋值给mask的left和top
+                mask.style.left = x + 'px'
+                mask.style.top = y + 'px'
+
+                // 4.让阴影部分不能移出small盒子
+                // 4.1 计算出x和y能够移动的最大宽度和高度
+                let mX = small.offsetWidth - mask.offsetWidth
+                let mY = small.offsetHeight - mask.offsetHeight
+
+                // 4.2 判断x,y的最大值和最小值
+                x = x < 0 ? 0 : x
+                x = x > mX ? mX : x
+                y = y < 0 ? 0 : y
+                y = y > mY ? mY : y
+
+                // 4.3重新将x,y的值赋值给mask的left和top
                 mask.style.left = x + 'px'
                 mask.style.top = y + 'px'
             }
