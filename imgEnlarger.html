@@ -79,10 +79,26 @@
             // 将阴影部分和类名为big的盒子显示出来
             mask.style.display = 'block'
             big.style.display = 'block'
+
+            // 3.给small盒子设置鼠标移动事件
+            small.onmousemove = function (e) {
+                // 3.1 获取鼠标在small盒子里的坐标
+                let x = e.pageX - this.offsetParent.offsetLeft
+                let y = e.pageY - this.offsetParent.offsetTop
+
+                // 3.2 让鼠标的位置在阴影部分的中间
+                x = x - mask.offsetWidth * 0.5
+                y = y - mask.offsetHeight * 0.5
+
+                // 将x,y的值赋值给mask的left和top
+                mask.style.left = x + 'px'
+                mask.style.top = y + 'px'
+            }
         }
 
         // 2.给类名为small的盒子设置鼠标移出事件
         small.onmouseleave = function () {
+            // 将阴影部分和类名为big的盒子隐藏
             mask.style.display = 'none'
             big.style.display = 'none'
         }
