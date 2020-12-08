@@ -70,7 +70,22 @@
     </div>
 
     <script>
+        let small = document.querySelector('.small')
+        let mask = document.querySelector('.mask')
+        let big = document.querySelector('.big')
 
+        // 1.给类名为small的盒子设置鼠标移入事件
+        small.onmouseenter = function () {
+            // 将阴影部分和类名为big的盒子显示出来
+            mask.style.display = 'block'
+            big.style.display = 'block'
+        }
+
+        // 2.给类名为small的盒子设置鼠标移出事件
+        small.onmouseleave = function () {
+            mask.style.display = 'none'
+            big.style.display = 'none'
+        }
     </script>
 </body>
 
