@@ -73,6 +73,7 @@
         let small = document.querySelector('.small')
         let mask = document.querySelector('.mask')
         let big = document.querySelector('.big')
+        let bigImg = document.querySelector('#bigImg')
 
         // 1.给类名为small的盒子设置鼠标移入事件
         small.onmouseenter = function () {
@@ -90,9 +91,9 @@
                 x = x - mask.offsetWidth * 0.5
                 y = y - mask.offsetHeight * 0.5
 
-                // 3.3将x,y的值赋值给mask的left和top
+                /* // 3.3将x,y的值赋值给mask的left和top
                 mask.style.left = x + 'px'
-                mask.style.top = y + 'px'
+                mask.style.top = y + 'px' */
 
                 // 4.让阴影部分不能移出small盒子
                 // 4.1 计算出x和y能够移动的最大宽度和高度
@@ -108,6 +109,10 @@
                 // 4.3重新将x,y的值赋值给mask的left和top
                 mask.style.left = x + 'px'
                 mask.style.top = y + 'px'
+
+                // 5.让大图跟着阴影部分的移动成比例的移动
+                bigImg.style.left = -x * (bigImg.offsetWidth / small.offsetWidth) + 'px'
+                bigImg.style.top = -y * (bigImg.offsetHeight / small.offsetHeight) + 'px'
             }
         }
 
